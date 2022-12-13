@@ -1,6 +1,8 @@
 const Task = require('../models/Task')
 const asyncWrapper = require('../middleware/async')
 const { createCustomError } = require('../errors/custom-error')
+
+//controller functions
 const getAllTasks = asyncWrapper(async (req, res) => {
   const tasks = await Task.find({})
   res.status(200).json({ tasks })
@@ -43,6 +45,7 @@ const updateTask = asyncWrapper(async (req, res, next) => {
   res.status(200).json({ task })
 })
 
+//exporting functions to be used in route
 module.exports = {
   getAllTasks,
   createTask,
